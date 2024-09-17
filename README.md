@@ -1,5 +1,3 @@
-# project_data_science
-
 # Loan Management System
 
 ## Introduction
