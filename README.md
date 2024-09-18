@@ -6,20 +6,19 @@ Dalam industri perbankan, pengelolaan data nasabah merupakan salah satu aspek ya
 Sistem Manajemen Pinjaman (Loan Management System) ini dibangun untuk memberikan gambaran tentang bagaimana sistem perbankan bekerja, terutama pada sistem pengelolaan data nasabah. Selain itu, proyek ini dibuat dengan tujuan untuk membantu bank atau lembaga keuangan dalam mengelola permohonan pinjaman nasabah dengan lebih efisien dan aman. Sistem ini tidak hanya memfasilitasi pengelolaan data nasabah, tetapi juga memastikan bahwa informasi penting seperti nomor rekening, skor kredit, dan rincian pinjaman tetap terjaga keamanannya. Dengan adanya sistem ini, diharapkan proses pengelolaan data pinjaman menjadi lebih cepat, transparan, dan aman.
 
 ## Fitur Utama
-- **Login:** Memungkinkan user untuk masuk dengan ID dan password yang memiliki akses pada sistem. Fitur ini menjamin keamanan akses ke sistem.
-- **Create:** Menambahkan Aplikasi Pinjaman.
-- **Read:** Melihat semua Aplikasi Pinjaman.
-- **Update:** Memperbarui data Aplikasi Pinjaman.
-- **Delete:** Menghapus Aplikasi Pinjaman.
+- **Login():** Memungkinkan user untuk masuk dengan ID dan password yang memiliki akses pada sistem. Fitur ini menjamin keamanan akses ke sistem.
+- **Create():** Menambahkan Aplikasi Pinjaman.
+- **Read():** Melihat semua Aplikasi Pinjaman.
+- **Update():** Memperbarui data Aplikasi Pinjaman.
+- **Delete():** Menghapus Aplikasi Pinjaman.
 
 ## Fitur Tambahan
 - **Pencarian Data:** Memungkinkan user untuk mencari data pinjaman berdasarkan kriteria nama pemohon.
-- **Manajemen Nomor Rekening:** Key colum berupa data nomor rekening pemohon dan bersifat identik untuk menghindari duplikasi data.
 - **Validasi Input:** Menjamin bahwa input yang dilakukan user benar dan validasi dilakukan sebelum transaksi (Create, Update, Delete).
 
 ## Cara Kerja Program
 
-### 1. Login
+### 1. Login()
 Ketika program dijalankan, tampilan awal adalah fitur login yang meminta user untuk login dengan `user_id` dan `password` yang valid. Dalam fitur login ini, jika user memasukkan `user_id` dan `password` yang tidak sesuai, program akan memberikan opsi untuk mencoba login kembali atau keluar dari program.
 
 Tampilan login:
@@ -27,7 +26,7 @@ Tampilan login:
 ![Tampilan Login](./images/login.png)
 
 Dalam program ini saya sudah mengimport library getpass, yang mana berfungsi untuk tidak menampilkan password yang diinput oleh user.
-Dalam fitur login ini, ketika user memasukkan `user_id` dan `password` yg tidak sesuai, maka program akan memberikan opsi ingin login kembali atau tidak, ketika memilih Y maka program akan meminta user untuk menginput kembali `user_id` dan `password` yang valid, jika user memilih N, maka program akan keluar secara otomatis. Berikut Code yang telah Saya buat :
+Dalam fitur login ini, ketika user memasukkan `user_id` dan `password` yg tidak sesuai, maka program akan memberikan opsi ingin login kembali atau tidak, ketika user memilih Y maka program akan meminta user untuk menginput kembali `user_id` dan `password` yang valid, jika user memilih N, maka program akan keluar secara otomatis. Berikut Code yang telah Saya buat :
 ![Code Login](./images/login-code.png)
 
 ### 2. Menu Utama
@@ -43,7 +42,7 @@ Dalam fitur Create, user diminta untuk menginput data aplikasi pinjaman baru, se
 4. Skor Kredit
 5. Jumlah Pinjaman
 
-Program ini saya telah ditentukan data nomor rekening adalah data yang identik, jadi ketika user menginput data nomor rekening yang sama dengan data yang telah tersimpan pada system, maka program akan mengeluarkan output keterangan bahwa nomor rekening sudah terdaftar, dan memberikan opsi apakah ingin menambahkan nomor rekening yang lain, atau ingin melakukan update data. Jika memilih input rekening baru, maka program akan looping kembali dan meminta user untuk input nomor rekening lain. Namun jika User memilih update data, maka program akan membawa ke tampilan update data. Kemudian, untuk data nomor telepon, Credit Score dan jumlah pinjaman saya buat harus dengan format number, jika tidak program akan meminta user untuk menginput kembali dengan format yg sesuai. Setelah User selesai input data, program akan menampilkan semua data yang telah diinput dan meminta konfirmasi kepada user apakah yakin ingin menambahkan aplikasi atau tidak, jika Y, maka data berhasil disimpan, dan jika N maka data batal disimpan dan kembali ke Menu Utama.
+Program ini saya telah ditentukan data nomor rekening adalah data yang identik, jadi ketika user menginput data nomor rekening yang sama dengan data yang telah tersimpan pada system, maka program akan mengeluarkan output keterangan bahwa nomor rekening sudah terdaftar, dan memberikan opsi apakah ingin menambahkan nomor rekening yang lain (N), atau ingin melakukan update data (U). Jika memilih input rekening baru (N), maka program akan looping kembali dan meminta user untuk input nomor rekening lain. Namun jika User memilih update data (U), maka program akan membawa ke tampilan update data. Kemudian, untuk data Nomor Telepon, Credit Score dan Jumlah Pinjaman saya buat harus dengan format number, jika data yang diinput bukan format number, program akan meminta user untuk menginput kembali dengan format yg sesuai. Setelah User selesai input data, program akan menampilkan semua data yang telah diinput dan meminta konfirmasi kepada user apakah yakin ingin menambahkan aplikasi atau tidak, jika Y, maka data berhasil disimpan, dan jika N maka data batal disimpan dan kembali ke Menu Utama.
 
 Kode Create:
 ![Code Create](./images/create-code.png)
@@ -54,8 +53,8 @@ Output create :
 ![output create](./images/create-output.png)
 
 Informasi tambahan :
-- Application ID, dalam program telah saya buat akan terisi secara otomatis berurut +1 dari application ID terbaru data sebelumnya.
-- Level Risiko, dalam program telah saya buat 3 level dengan ketentuan:
+- ``ApplicationID``, dalam program telah saya buat akan terisi secara otomatis berurut +1 dari application ID terbaru data sebelumnya.
+- ``Risk Level``, dalam program telah saya buat 3 level dengan ketentuan:
     1. Low, Skor kredit >= 750
     2. Medium, 650 <=Skor kredit< 750 
     3. High, Skor kredit < 650
@@ -73,7 +72,7 @@ Output Fitur Read :
 ![output read](./images/read-output.png)
 
 ### 5. Perbarui Aplikasi Pinjaman (Fitur Update)
-Pada fitur Update, user diminta untuk menginput Application ID yang ingin diperbarui. Jika ditemukan, program akan menampilkan data terkait dan memungkinkan user untuk memilih kategori yang akan di-update.
+Pada fitur Update, user diminta untuk menginput ``ApplicationID`` yang ingin diperbarui. Jika ditemukan, program akan menampilkan data terkait dan memungkinkan user untuk memilih kategori yang akan di-update.
 Jika user ingin melakukan update pada kategori Account Number, dalam program dibuat bahwa account number harus bersifat identik. Jadi jika user menginput nomor rekening yang sudah ada dalam system, maka program akan mengeluarkan output nomor rekening sudah terdaftar dalam system dan mengembalikan ke menu utama. Begitu juga dengan Credit Score akan secara otomatis mengupdate risk level sesuai dengan ketentuan. Setelah update data dilakukan, program akan meminta validasi kepada user apakah yakin ingin dilakukan update data? jika Y akan memanggil userID yang melakukan update dan secara otomatis mengupdate pada kolum `userID`.
 Tampilan Sebelum update:
 ![Before Update](./images/update.png)
@@ -82,8 +81,8 @@ Gambar output update :
 ![After Update](./images/update-after.png)
 
 ### 6. Hapus Aplikasi Pinjaman (Fitur Delete)
-Diawal sebelum block coode delete, saya membuat sebuah list kosong yang nantinya akan menyimpan data yang telah dihapus oleh user.
-Pada Fitur Delete, program akan meminta user untuk menginput Application ID yang akan dihapus. Data yang dihapus akan disimpan di list `deleted_loan` dan `userID` yang melakukan transaksi akan tercatat.
+Diawal sebelum membuat block code delete, saya telah membuat sebuah list kosong yang nantinya akan menyimpan data yang telah dihapus oleh user.
+Pada Fitur Delete, program akan meminta user untuk menginput ApplicationID yang akan dihapus. Data yang dihapus akan disimpan di list `deleted_loan` dan `userID` yang melakukan transaksi akan tercatat.
 Kode Delete :
 ![Code Delete](./images/delete-code.png)
 
